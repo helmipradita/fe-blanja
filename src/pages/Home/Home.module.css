@@ -1,0 +1,12 @@
+.carousel {
+  /* background-color: #fff333; */
+}
+
+.abbc {
+  background-color: aqua;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  border-radius: 5px;
+}
