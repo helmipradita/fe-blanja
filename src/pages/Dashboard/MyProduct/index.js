@@ -17,7 +17,7 @@ export default function Product() {
     name: '',
     stock: '',
     price: '',
-    category_id: '1',
+    categories_id: '1',
     search: '',
   });
   const [sortBy, setSortBy] = useState('name');
@@ -118,7 +118,7 @@ export default function Product() {
     formData.append('name', inputData.name);
     formData.append('stock', inputData.stock);
     formData.append('price', inputData.price);
-    formData.append('category_id', inputData.category_id);
+    formData.append('categories_id', inputData.categories_id);
     formData.append('photo', photo);
     console.log(formData);
     if (!selected) {
@@ -235,11 +235,11 @@ export default function Product() {
                 <div className="form-group col-md-6">
                   <label for="inputPassword4">Photo</label>
                   <input
-                    className="form-control-file"
+                    className="form-control"
                     type="file"
                     name="photo"
                     onChange={handlePhoto}
-                    placeholder=""
+                    placeholder="photo"
                     required
                   />
                 </div>
