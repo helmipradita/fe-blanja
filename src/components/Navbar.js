@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import blanja from '../../src/images/assets/blanja.png';
 import cart from '../../src/images/assets/cart.png';
 import Filter from './Filter.js';

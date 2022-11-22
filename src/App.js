@@ -2,7 +2,7 @@ import { useState } from 'react';
 import About from './pages/About';
 import Home from './pages/Home';
 import DetailProduct from './pages/DetailProduct';
-import MyProduct from './pages/Dashboard/MyProduct';
+import MyProduct from './pages/Dashboard/MyProduct/index';
 import Profile from './pages/Dashboard/Profile';
 import LoginCustomer from './pages/Auth/Login/Customer';
 import LoginSeller from './pages/Auth/Login/Seller';
@@ -16,17 +16,17 @@ import KonfirmasiPasswordLoginCustomer from './pages/Auth/KonfirmasiPasswordLogi
 import KonfirmasiPasswordLoginSeller from './pages/Auth/KonfirmasiPasswordLogin/Seller';
 import MyBag from './pages/Dashboard/MyBag';
 import Categories from './pages/Dashboard/Categories';
+import AuthChecker from './components/AuthChecker';
 import { BrowserRouter, Route, Link, Routes, Navigate } from 'react-router-dom';
 
 function App() {
-  const [title, setTitle] = useState();
   return (
     <div className="App">
-      <header className="App-header">{title}</header>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/home" replace="true" />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/detailproduct" element={<DetailProduct />} />
+          <Route path="/detailproduct/:id" element={<DetailProduct />} />
           <Route path="/about" element={<About />} />
           <Route path="/logincustomer" element={<LoginCustomer />} />
           <Route path="/loginseller" element={<LoginSeller />} />
@@ -56,7 +56,14 @@ function App() {
             path="/konfirmasipasswordloginseller"
             element={<KonfirmasiPasswordLoginSeller />}
           />
-          <Route path="/dashboard/myproduct" element={<MyProduct />} />
+          <Route
+            path="/dashboard/myproduct"
+            element={
+              <AuthChecker>
+                <MyProduct />
+              </AuthChecker>
+            }
+          />
           <Route path="/dashboard/profile" element={<Profile />} />
           <Route path="/dashboard/my-bag" element={<MyBag />} />
           <Route path="/dashboard/categories" element={<Categories />} />

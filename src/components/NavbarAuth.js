@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import blanja from '../../src/images/assets/blanja.png';
 import Filter from './Filter.js';
 import cart from '../../src/images/assets/cart.png';
@@ -9,6 +9,11 @@ import mail from '../../src/images/assets/mail.png';
 import profile from '../../src/images/assets/profile.png';
 
 const Navbar = () => {
+  const navigate = useNavigate;
+  const logout = () => {
+    localStorage.clear();
+    navigate('/logincustomer');
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,7 +40,7 @@ const Navbar = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              style={{ width: 500 }}
+              style={{ width: 400 }}
             />
           </form>
 
@@ -73,6 +78,9 @@ const Navbar = () => {
               <img src={profile} alt="profile" />
             </Link>
           </div>
+          <button className="btn btn-danger btn-small" onClick={() => logout()}>
+            logout
+          </button>
         </Container>
       </nav>
     </div>

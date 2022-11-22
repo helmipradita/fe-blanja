@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../../components/Navbar.js';
+import NavbarAuth from '../../../components/NavbarAuth.js';
 import axios from 'axios';
 import styles from './Product.module.css';
 import Alert from '../../../components/Alert';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export default function Product() {
   const [data, setData] = useState([]);
@@ -74,7 +76,7 @@ export default function Product() {
   }, [selected]);
 
   const messageTime = () => {
-    setTimeout(() => setMessageShow(false), 8000);
+    setTimeout(() => setMessageShow(false), 3000);
   };
   useEffect(() => {
     console.log('checked', sortBy);
@@ -190,185 +192,202 @@ export default function Product() {
 
   return (
     <div>
-      <Navbar />
-      {/* post data */}
-      <div className="col-md-12 mt-4">
-        <div className="card">
-          <div className="card-body">
-            <form>
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label for="inputEmail4">Name</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    value={inputData.name}
-                    name="name"
-                    onChange={handleChange}
-                    placeholder=""
-                  />
-                </div>
-                <div className="form-group col-md-6">
-                  <label for="inputPassword4">Stock</label>
-                  <input
-                    className="form-control"
-                    type="number"
-                    value={inputData.stock}
-                    name="stock"
-                    onChange={handleChange}
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label for="inputEmail4">Price</label>
-                  <input
-                    className="form-control"
-                    type="number"
-                    value={inputData.price}
-                    name="price"
-                    onChange={handleChange}
-                    placeholder=""
-                  />
-                </div>
-                <div className="form-group col-md-6">
-                  <label for="inputPassword4">Photo</label>
-                  <input
-                    className="form-control"
-                    type="file"
-                    name="photo"
-                    onChange={handlePhoto}
-                    placeholder="photo"
-                    required
-                  />
-                </div>
-              </div>
-              {onedit ? (
-                <button className="btn btn-info btn-block" type="submit">
-                  Update
-                </button>
-              ) : (
-                <button className="btn btn-primary btn-block" type="submit">
-                  Post
-                </button>
-              )}
-            </form>
-          </div>
+      <NavbarAuth />
+      <div className="row">
+        <div className="col-md-4 bg-dark" align="center">
+          <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </DropdownButton>
         </div>
-      </div>
+        <div className="col-md-6">
+          {/* post data */}
+          <div className="col-md-6 offset-4 mt-4"></div>
 
-      {/* filter */}
-      <div className="container bg-info mt-2 p-2 rounded">
-        Filter
-        <div className="container d-flex flex-row">
-          <div className="">
-            <div
-              className={`btn ${
-                sortBy == 'name' ? 'btn-primary' : 'btn-secondary'
-              } ms-1`}
-              onClick={() => setSortBy('name')}
-            >
-              name
-            </div>
-            <div
-              className={`btn ${
-                sortBy == 'stock' ? 'btn-primary' : 'btn-secondary'
-              } ms-1`}
-              onClick={() => setSortBy('stock')}
-            >
-              stock
-            </div>
-            <div
-              className={`btn ${
-                sortBy == 'price' ? 'btn-primary' : 'btn-secondary'
-              } ms-1`}
-              onClick={() => setSortBy('price')}
-            >
-              price
+          <div className="card">
+            <div className="card-body">
+              <form onSubmit={postForm}>
+                <div className="row">
+                  <div className="form-group col-md-6">
+                    <label for="inputEmail4">Name</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      value={inputData.name}
+                      name="name"
+                      onChange={handleChange}
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputPassword4">Stock</label>
+                    <input
+                      className="form-control"
+                      type="number"
+                      value={inputData.stock}
+                      name="stock"
+                      onChange={handleChange}
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="form-group col-md-6">
+                    <label for="inputEmail4">Price</label>
+                    <input
+                      className="form-control"
+                      type="number"
+                      value={inputData.price}
+                      name="price"
+                      onChange={handleChange}
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputPassword4">Photo</label>
+                    <input
+                      className="form-control"
+                      type="file"
+                      name="photo"
+                      onChange={handlePhoto}
+                      placeholder="photo"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-md-12 mt-4">
+                  {onedit ? (
+                    <button className="btn btn-info btn-block" type="submit">
+                      Update
+                    </button>
+                  ) : (
+                    <button className="btn btn-primary btn-block" type="submit">
+                      Post
+                    </button>
+                  )}
+                </div>
+              </form>
             </div>
           </div>
-          <div className="ms-1 border-start border-dark">
-            <div
-              className={`btn ${
-                sort == 'asc' ? 'btn-primary' : 'btn-secondary'
-              } ms-1`}
-              onClick={() => setSort('asc')}
-            >
-              asc
-            </div>
-            <div
-              className={`btn ${
-                sort == 'desc' ? 'btn-primary' : 'btn-secondary'
-              } ms-1`}
-              onClick={() => setSort('desc')}
-            >
-              desc
+
+          {/* filter */}
+          <div className="container bg-info mt-2 p-2 rounded">
+            Filter
+            <div className="container d-flex flex-row">
+              <div className="">
+                <div
+                  className={`btn ${
+                    sortBy == 'name' ? 'btn-primary' : 'btn-secondary'
+                  } ms-1`}
+                  onClick={() => setSortBy('name')}
+                >
+                  name
+                </div>
+                <div
+                  className={`btn ${
+                    sortBy == 'stock' ? 'btn-primary' : 'btn-secondary'
+                  } ms-1`}
+                  onClick={() => setSortBy('stock')}
+                >
+                  stock
+                </div>
+                <div
+                  className={`btn ${
+                    sortBy == 'price' ? 'btn-primary' : 'btn-secondary'
+                  } ms-1`}
+                  onClick={() => setSortBy('price')}
+                >
+                  price
+                </div>
+              </div>
+              <div className="ms-1 border-start border-dark">
+                <div
+                  className={`btn ${
+                    sort == 'asc' ? 'btn-primary' : 'btn-secondary'
+                  } ms-1`}
+                  onClick={() => setSort('asc')}
+                >
+                  asc
+                </div>
+                <div
+                  className={`btn ${
+                    sort == 'desc' ? 'btn-primary' : 'btn-secondary'
+                  } ms-1`}
+                  onClick={() => setSort('desc')}
+                >
+                  desc
+                </div>
+              </div>
+              <div className="search ms-2">
+                <input
+                  type="text"
+                  className="form-control"
+                  value={inputData.search}
+                  name="search"
+                  onChange={handleChange}
+                  placeholder="search"
+                />
+              </div>
             </div>
           </div>
-          <div className="search ms-2">
-            <input
-              type="text"
-              className="form-control"
-              value={inputData.search}
-              name="search"
-              onChange={handleChange}
-              placeholder="search"
+
+          {/* get data */}
+          <table className="table container">
+            <thead>
+              <tr>
+                <th>number</th>
+                <th>nama</th>
+                <th>stock</th>
+                <th>harga</th>
+                <th>photo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr
+                  key={index + 1}
+                  className={`${item.id == selected ? 'bg-info' : 'bg-white'}`}
+                  onClick={
+                    item.id == selected
+                      ? () => setSelected(null)
+                      : () => (setSelected(item.id), editForm(item))
+                  }
+                >
+                  <td>{index + 1}</td>
+                  <td>{item.name}</td>
+                  <td>{item.stock}</td>
+                  <td>{item.price}</td>
+                  <td>
+                    <img src={item.photo} className={styles.photo} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* delete data */}
+          {selected && (
+            <div className="container">
+              <button
+                className="btn btn-danger mx-auto col-12"
+                onClick={() => deleteData()}
+              >
+                delete {temp?.name ?? ''}
+              </button>
+            </div>
+          )}
+
+          {/* alert */}
+          {messageShow && (
+            <Alert
+              title={message.title}
+              text={message.text}
+              type={message.type}
             />
-          </div>
+          )}
         </div>
       </div>
-
-      {/* get data */}
-      <table className="table container">
-        <thead>
-          <tr>
-            <th>number</th>
-            <th>nama</th>
-            <th>stock</th>
-            <th>harga</th>
-            <th>photo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr
-              key={index + 1}
-              className={`${item.id == selected ? 'bg-info' : 'bg-white'}`}
-              onClick={
-                item.id == selected
-                  ? () => setSelected(null)
-                  : () => (setSelected(item.id), editForm(item))
-              }
-            >
-              <td>{index + 1}</td>
-              <td>{item.name}</td>
-              <td>{item.stock}</td>
-              <td>{item.price}</td>
-              <td>
-                <img src={item.photo} className={styles.photo} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* delete data */}
-      {selected && (
-        <div className="container">
-          <button
-            className="btn btn-danger mx-auto col-12"
-            onClick={() => deleteData()}
-          >
-            delete {temp?.name ?? ''}
-          </button>
-        </div>
-      )}
-
-      {/* alert */}
-      {messageShow && (
-        <Alert title={message.title} text={message.text} type={message.type} />
-      )}
     </div>
   );
 }
