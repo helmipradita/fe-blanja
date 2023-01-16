@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import blanja from '../../src/images/assets/blanja.png';
@@ -7,13 +7,32 @@ import cart from '../../src/images/assets/cart.png';
 import bell from '../../src/images/assets/bell.png';
 import mail from '../../src/images/assets/mail.png';
 import profile from '../../src/images/assets/profile.png';
+import { useSelector } from 'react-redux';
 
-const Navbar = () => {
-  const navigate = useNavigate;
+const NavbarAuth = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
+  const [whoIsLogin, setWhoIsLogin] = useState('');
+
   const logout = () => {
     localStorage.clear();
-    navigate('/logincustomer');
+    window.location.reload(false);
   };
+  const token = localStorage.getItem('token');
+
+  const user = useSelector((state) => state.user.user);
+  useEffect(() => {
+    if (user.role === 'toko') {
+      setIsLogin(true);
+    } else if (user.role === 'customer') {
+      setIsLogin(true);
+    }
+  }, []);
+  console.log(isLogin);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,14 +71,14 @@ const Navbar = () => {
             <Link
               className="nav-link"
               style={{ paddingRight: 20 }}
-              to="/my-bag"
+              to="/dashboard/my-bag"
             >
               <img src={cart} alt="cart" />
             </Link>
             <Link
               className="nav-link"
               style={{ paddingRight: 20 }}
-              to="/my-bag"
+              to="/dashboard/my-bag"
             >
               <img src={bell} alt="bell" />
             </Link>
@@ -78,13 +97,33 @@ const Navbar = () => {
               <img src={profile} alt="profile" />
             </Link>
           </div>
-          <button className="btn btn-danger btn-small" onClick={() => logout()}>
-            logout
-          </button>
+          {!isLogin && (
+            <div>
+              <Link to="/logincustomer">
+                <button
+                  className="btn btn-info btn-small"
+                  onClick={() => logout()}
+                >
+                  Login
+                </button>
+              </Link>
+            </div>
+          )}
+          {isLogin && (
+            <div>
+              <img src={cart}></img>
+              <button
+                className="btn btn-danger btn-small"
+                onClick={() => logout()}
+              >
+                logout
+              </button>
+            </div>
+          )}
         </Container>
       </nav>
     </div>
   );
 };
 
-export default Navbar;
+export default NavbarAuth;

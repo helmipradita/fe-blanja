@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export default function Product() {
+  const { REST_API } = process.env;
   const [data, setData] = useState([]);
   const [photo, setPhoto] = useState(null);
   const [message, setMessage] = useState({
@@ -86,7 +87,7 @@ export default function Product() {
     getData();
   }, []);
 
-  let users = `http://localhost:8000/products?sortby=${sortBy}&sort=${sort}&search=${inputData.search}`;
+  let users = `https://be-blanja-production.up.railway.app/products?sortby=${sortBy}&sort=${sort}&search=${inputData.search}`;
   const getData = () => {
     axios
       .get(users)
@@ -194,7 +195,7 @@ export default function Product() {
     <div>
       <NavbarAuth />
       <div className="row">
-        <div className="col-md-4 bg-dark" align="center">
+        <div className="col-md-4 bg-light mt-4" align="center">
           <DropdownButton id="dropdown-basic-button" title="Dropdown button">
             <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>

@@ -3,8 +3,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import blanja from '../../../../images/assets/blanja.png';
-import { loginUser } from '../../../../redux/actions/login';
+import blanja from '../../../images/assets/blanja.png';
+import { loginUser } from '../../../redux/actions/login';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
