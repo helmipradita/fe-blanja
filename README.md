@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Blanja App</h3>
+  <p align="center">
+    <image align="center" width="200" src='https://res.cloudinary.com/dnu5su7ft/image/upload/v1674602322/Group_1158_1_eodcpq.png' />
+  </p>
 
-## Available Scripts
+  <p align="center">
+    <br />
+    <a href="https://github.com/helmipradita/be-blanja/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://api-blanja.helmipradita.dev">View Demo</a>
+  </p>
+</p>
 
-In the project directory, you can run:
 
-### `npm start`
+<br />
+<p align="center">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  <h3 align="center">Telegram App</h3>
+  <p align="center">
+    <image align="center" width="200" src='https://res.cloudinary.com/dnu5su7ft/image/upload/v1674602322/Telegram_w0ulpa.png' />
+  </p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  <p align="center">
+    <br />
+    <a href="https://github.com/helmipradita/fe-telegram"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://telegram.helmipradita.dev">View Demo</a>
+  </p>
+</p>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Table of Contents
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Screenshot](#screenshot)
+* [Related Project](#related-project)
+* [Contact](#contact)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## About The Project
 
-### `npm run eject`
+Blanja is a website for looking for clothes, goods or tools. This website is of the e-commerce type, so the contents of this website are buying and selling products. There are 2 accounts on this website, a customer and a seller. On the customer side, you can choose products to checkout the product of their choice, on the seller side, you can add products to each store so that customers can buy them. [demo recipe](https://blanja.helmipradita.dev/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [Node JS](https://nodejs.org/en/docs/)
+* [React.js](https://reactjs.org/) project bootstrapped with [`create-react-app`](https://github.com/facebook/react/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+This is an example of how to list things you need to use the software and how to install them.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [nodejs](https://nodejs.org/en/download/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+1. Clone the repo
+```bash
+git clone https://github.com/helmipradita/fe-blanja
+```
+2. Install NPM packages
+```bash
+npm install
+```
+3. Add .env file at root folder project, and add following or use your own
+```bash
+REST_API=https://api-blanja.helmipradita.dev
+```
+4. Run the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-### Analyzing the Bundle Size
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Screenshot
 
-### Making a Progressive Web App
+| Landing Page | Detail Product | Checkout |
+| ------------- | ------------- | ------------- |
+| ![landing page](https://res.cloudinary.com/dnu5su7ft/image/upload/v1674604221/Screenshot-20230124195526-1918x1052_jelnvj.png) | ![detail](https://res.cloudinary.com/dnu5su7ft/image/upload/v1674604216/Screenshot-20230124195642-1918x1051_wqzixq.png) | ![checkout](https://i.imgur.com/SYlKCEp.png) |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Login Page | Register Customer | Register Seller |
+| ------------- | ------------- | ------------- |
+| ![login](https://i.imgur.com/kap3YOJ.png) | ![registercust](https://i.imgur.com/vmwjvMd.png) | ![registerseller](https://i.imgur.com/ckdsMsI.png) |
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Related Project
+* [`Backend Project Blanja `](https://github.com/helmipradita/be-blanja)
+* [`REST API Blanja`](https://api-blanja.helmipradita.dev)
 
-### Deployment
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Contributors names and contact info Fullstack Developers
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Helmi Pradita [@helmipradita](https://github.com/helmipradita)
